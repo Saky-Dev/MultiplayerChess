@@ -1,10 +1,11 @@
 @import ../../global/styles/variables
+@import ../../global/styles/mixins
 
 div.form-field
+  @include flexing($direction: row, $align: center, $justify: flex-start)
+
   position: relative
-  display: flex
-  align-items: center
-  justify-content: flex-start
+  width: 100%
 
   input
     width: 100%
@@ -18,10 +19,16 @@ div.form-field
     padding: 4px 0
     transition: .2s ease
 
-    &:is(:focus, :hover, :valid)
+    &:is(:focus, :valid)
       outline: none
       border:
         color: $--color-light-main
+
+      + label
+        font-size: $--font-small
+        color: $--color-light-main
+        left: 0
+        bottom: 110%
 
   label
     position: absolute
@@ -30,9 +37,3 @@ div.form-field
     bottom: 6px
     color: $--color-light-contrast
     transition: .2s ease
-
-  input:valid + label
-    font-size: $--font-small
-    color: $--color-light-main
-    left: 0
-    bottom: 110%

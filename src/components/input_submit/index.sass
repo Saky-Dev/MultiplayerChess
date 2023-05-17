@@ -1,0 +1,19 @@
+@import ../../global/styles/variables
+@import ../../global/styles/mixins
+
+input[type='submit']
+  width: min-content
+  height: min-content
+  padding: 12px 24px
+  background-color: $--color-light-main
+  border: none
+  font-size: $--font-small
+  color: $--color-light-background
+  font-weight: 600
+  border-radius: 4px
+  transition: .2s ease
+  cursor: pointer
+
+  &:is(:focus, :hover)
+    outline: none
+    background-color: mix($--color-light-main, $--color-light-contrast, 85%)

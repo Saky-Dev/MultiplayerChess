@@ -1,4 +1,3 @@
-import '../../global/styles/normalize.sass'
 import './index.sass'
 
 const InputText = ({ value = 'undefined', text = 'undefined' }) => (

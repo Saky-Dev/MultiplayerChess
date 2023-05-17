@@ -1,11 +1,19 @@
+@import ../../global/styles/normalize
+@import ../../global/styles/variables
+@import ../../global/styles/mixins
+
 main.home
+  @include flexing($direction: column, $align: center, $justify: center)
+
   width: 100%
   min-height: 90vh
-  display: flex
-  align-items: center
-  justify-content: center
 
   form#user-data
-    width: fit-content
-    height: fit-content
+    @include flexing($direction: column, $align: flex-end, $justify: center)
+
+    width: clamp(350px, 35vw, 820px)
+    height: auto
     padding: 10vh 5vw
+    box-shadow: 0 2px 6px $--color-light-shadow
+    gap: 30px
+    border-radius: 5px
