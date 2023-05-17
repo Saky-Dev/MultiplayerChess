@@ -1,0 +1,38 @@
+@import ../../global/styles/variables
+
+div.form-field
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+  input
+    width: 100%
+    height: auto
+    font-size: $--font-text
+    border:
+      color: $--color-light-contrast
+      width: 0 0 2px 0
+      style: solid
+    color: $--color-light-contrast
+    padding: 4px 0
+    transition: .2s ease
+
+    &:is(:focus, :hover, :valid)
+      outline: none
+      border:
+        color: $--color-light-main
+
+  label
+    position: absolute
+    font-size: $--font-text
+    left: 2px
+    bottom: 6px
+    color: $--color-light-contrast
+    transition: .2s ease
+
+  input:valid + label
+    font-size: $--font-small
+    color: $--color-light-main
+    left: 0
+    bottom: 110%
