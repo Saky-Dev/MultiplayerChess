@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { db } from '../../modules/firebase'
-import { Timestamp, collection, query, where, getDocs, deleteDoc, addDoc } from 'firebase/firestore'
+import { Timestamp, collection, query, where, getDocs, addDoc } from 'firebase/firestore'
 import * as PE from '../../global/scripts/errors'
 import InputText from '../../components/input_text'
 import InputSubmit from '../../components/input_submit'
@@ -20,21 +20,6 @@ const Home = () => {
   const [username, setUsername] = useState('')
   const [isUserValid, setUserValid] = useState(false)
   const [created, setCreated] = useState(Timestamp.now().toMillis())
-
-  useEffect(() => {
-    const less24 = Timestamp.fromMillis(created - hoursToMillis(24))
-    const usersRef = collection(db, 'Users')
-    const queryRes = query(usersRef, where('created', '<', less24.toMillis()))
-
-    getDocs(queryRes)
-      .then(querySnap => {
-        querySnap.forEach(document => {
-          deleteDoc(document.ref)
-            .catch(err => { throw new PE.FirebaseError(err) })
-        })
-      })
-      .catch(err => { throw new PE.FirebaseError(err) })
-  })
 
   const handleSubmitUserData = e => {
     e.preventDefault()
